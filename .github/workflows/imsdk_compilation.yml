@@ -25,6 +25,19 @@ jobs:
         uses: ./.github/actions/resolve-nightly-download-url
         with:
           token: ${{ secrets.QUALCOMM_LINUX_PAT }}
+
+      - name: Print Build Urls
+        run: |
+          echo "Resolved SDK and image URLs from latest wrynose nightly:"
+          echo "SDK URL: ${{ steps.sdk-url.outputs.sdk-url }}"
+          echo "iq-9075-evk/proprietary: ${{ fromJson(steps.sdk-url.outputs.image-urls)['iq-9075-evk/proprietary'] }}"
+          echo "iq-9075-evk/multimedia: ${{ fromJson(steps.sdk-url.outputs.image-urls)['iq-9075-evk/multimedia'] }}"
+          echo "iq-8275-evk/proprietary: ${{ fromJson(steps.sdk-url.outputs.image-urls)['iq-8275-evk/proprietary'] }}"
+          echo "iq-8275-evk/multimedia: ${{ fromJson(steps.sdk-url.outputs.image-urls)['iq-8275-evk/multimedia'] }}"
+          echo "iq-615-evk/proprietary: ${{ fromJson(steps.sdk-url.outputs.image-urls)['iq-615-evk/proprietary'] }}"
+          echo "iq-615-evk/multimedia: ${{ fromJson(steps.sdk-url.outputs.image-urls)['iq-615-evk/multimedia'] }}"
+          echo "rb3gen2-core-kit/proprietary: ${{ fromJson(steps.sdk-url.outputs.image-urls)['rb3gen2-core-kit/proprietary'] }}"
+          echo "rb3gen2-core-kit/multimedia: ${{ fromJson(steps.sdk-url.outputs.image-urls)['rb3gen2-core-kit/multimedia'] }}"
   build:
     needs: init
     runs-on:
