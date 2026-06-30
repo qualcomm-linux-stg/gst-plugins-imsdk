@@ -10,7 +10,22 @@ on:
       - main
 
 jobs:
+  init:
+    runs-on: ubuntu-latest
+    outputs:
+      sdk-url: ${{ steps.sdk-url.outputs.sdk-url }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Resolve SDK URL from latest wrynose nightly
+        id: sdk-url
+        uses: ./.github/actions/resolve-nightly-download-url
+        with:
+          token: ${{ secrets.QUALCOMM_LINUX_PAT }}
   build:
+    needs: init
     runs-on:
       group: GHA-Framework-Stg-SelfHosted-RG
       labels:
@@ -19,12 +34,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Run build
         env:
           S3_WEBAPP_TOKEN: ${{ secrets.S3_WEBAPP_TOKEN }}
-          SDK_OBJECT_URL: ${{ secrets.SDK_OBJECT_URL }}
+          SDK_OBJECT_URL: ${{ needs.init.outputs.sdk-url }}
         run: |
           chmod +x ci/build.sh
           ./ci/build.sh
