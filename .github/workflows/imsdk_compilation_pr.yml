@@ -1,5 +1,5 @@
 name: IMSDK_UAT_Compilation_PR
-run-name: "IMSDK UAT Compilation: #${{ github.event.workflow_run.pull_requests[0].number }}"
+run-name: "IMSDK UAT Compilation: #${{ github.event.workflow_run.pull_requests.number }}"
 
 # Runs in the base repo's context (so secrets are available) after
 # IMSDK_UAT_Compilation's save-pr-context job uploads the PR head SHA as an
