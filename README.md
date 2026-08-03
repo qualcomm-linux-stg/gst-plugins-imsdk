@@ -2,7 +2,7 @@
 
 The QIM SDK encapsulates hardware complexity within a modular plugin architecture, freeing developers from the burden of managing low-level platform libraries or hardware-specific details that vary across Qualcomm chipsets and generations.
 
-Each QIMSDK plugins in the SDK maps directly to a dedicated hardware accelerator — including video encode/decode, camera ISP, GPU, display, and AI/ML accelerators — giving developers a clean, unified API surface to build sophisticated multimedia and AI pipelines with minimal integration overhead.
+Each QIMSDK plugins in the SDK maps directly to a dedicated hardware accelerator — including video encode/decode, camera ISP, GPU, display, and AI/ML accelerators — giving developers a clean, unified API surface to build sophisticated multimedia and AI pipelines with minimal /integration overhead.
 
 ![Architecture](docs/imsdk_plugins.drawio.svg)
 
