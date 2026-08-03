@@ -21,10 +21,10 @@ on:
 jobs:
   build:
     runs-on:
-      group: GHA-Framework-SelfHosted-RG
+      group: GHA-Framework-Stg-SelfHosted-RG
       labels:
         - self-hosted
-        - framework-prd-u2404-x64-od-ephem
+        - framework-stg-u2404-x64-od-ephem
 
     steps:
       - name: Checkout code
